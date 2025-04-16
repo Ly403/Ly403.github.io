@@ -1,38 +1,27 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "Yi LIU",
+    "label": "Master's Student",
     "image": "",
-    "email": "albert@einstein.de",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "email": "liuyi61@tongji.edu.cn",
+    "phone": "(+86) 183-2641-8258",
+    "url": "https://Ly403.github.io/",
+    "summary": "Yi Liu is currently a master's student at ADMIS Lab in Tongji University, supervised by Associate Professor Wengen Li. Before that, he received his bachelor’s degree at Tongji University in 2024.",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "address": "4800 Cao'an Road, Jiading District",
+      "postalCode": "201804",
+      "city": "Shanghai",
+      "countryCode": "China",
+      "region": "Shanghai"
     },
     "profiles": [
       {
-        "network": "Twitter",
-        "username": "AlbertEinstein",
-        "url": "https://twitter.com/AlbertEinstein"
+        "network": "Zhihu",
+        "username": "Yi Liu",
+        "url": "https://www.zhihu.com/people/xiao-niu-42-28"
       }
     ]
   },
-  "work": [
-    {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "url": "https://example.com",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
-    }
-  ],
   "volunteer": [
     {
       "organization": "People's Climate March",
@@ -151,13 +140,13 @@
   ],
   "languages": [
     {
-      "language": "German",
+      "language": "Mandarin Chinese",
       "fluency": "Native speaker",
       "icon": ""
     },
     {
       "language": "English",
-      "fluency": "Fluent",
+      "fluency": "Fluent (IELTS 7.0)",
       "icon": ""
     }
   ],

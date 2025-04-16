@@ -1,14 +1,10 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - Ly403
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - Ly403/EMRDM
+  - Ly403/blogs
+  - Ly403/Ly403.github.io
+  - Ly403/MIPS_CPU
