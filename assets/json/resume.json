@@ -2,8 +2,8 @@
   "basics": {
     "name": "Yi LIU",
     "label": "Master's Student",
-    "image": "",
-    "email": "liuyi61@tongji.edu.cn",
+    "image": "profile.jpg",
+    "email": "liuyi2052697@foxmail.com",
     "phone": "(+86) 183-2641-8258",
     "url": "https://Ly403.github.io/",
     "summary": "Yi Liu is currently a master's student at ADMIS Lab in Tongji University, supervised by Associate Professor Wengen Li. Before that, he received his bachelor’s degree at Tongji University in 2024.",
@@ -22,119 +22,95 @@
       }
     ]
   },
-  "volunteer": [
-    {
-      "organization": "People's Climate March",
-      "location": "Zurich, Switzerland",
-      "position": "Lead Organizer",
-      "url": "https://example.com",
-      "startDate": "2014-04-01",
-      "endDate": "2015-07-01",
-      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
-      "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
-    }
-  ],
   "education": [
     {
-      "institution": "University of Zurich, Zurich, Switzerland",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
-      "area": "Software Development",
-      "studyType": "PhD",
-      "startDate": "1905-01-01",
-      "endDate": "1905-01-01",
-      "score": "10",
-      "courses": ["Theory of Relativity"]
+      "institution": "Tongji University",
+      "location": "Shanghai, China",
+      "url": "https://www.tongji.edu.cn/",
+      "area": "Computer Science and Technology, College of Computer Science and Technology",
+      "studyType": "Master",
+      "startDate": "2024-09-01",
+      "endDate": "2027-03-01",
+      "score": "95.18/100.0",
+      "courses": ["Professional English", "Concrete Mathematics", "Frontiers of Computing Technology", "Machine Learning: Theories and Applications", "Principles of Artificial Intelligence"]
+    },
+    {
+      "institution": "Tongji University",
+      "location": "Shanghai, China",
+      "url": "https://www.tongji.edu.cn/",
+      "area": "Computer Science and Technology, College of Electronics and Information Engineering",
+      "studyType": "Bachelor",
+      "startDate": "2020-09-01",
+      "endDate": "2024-07-01",
+      "score": "4.65/5.0 (91.5/100)",
+      "courses": ["Machine Learning", "Computer Networks", "Operating Systems", "Artificial Intelligence", "Data Structures and Algorithms", "Compiler Principle", "Computer Organization and Architecture", "Database System Principles", "Advanced Programming Design", "Probability and Statistics", "Linear Algebra", "Discrete Mathematics", "Advanced Mathematics"]
+    },
+    {
+      "institution": "Fudan University",
+      "location": "Shanghai, China",
+      "url": "https://www.fudan.edu.cn/en/",
+      "area": "Finance",
+      "studyType": "Minor",
+      "startDate": "2021-09-01",
+      "endDate": "2023-03-01"
     }
   ],
   "awards": [
     {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
-    }
-  ],
-  "certificates": [
-    {
-      "name": "Machine Learning",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-location-dot"
+      "title": "Golden Prize, The 9th China International College Students' \"Internet+\" Innovation and Entrepreneurship Competition (Shanghai Regional)",
+      "date": "2023-09-01",
+      "awarder": "Shanghai Municipal Education Commission",
+      "summary": "China International College Students' \"Internet+\" Innovation and Entrepreneurship Competition (\"互联网+\"大学生创新创业大赛) is a national-level competition for college students. Organized by the Ministry of Education and other government bodies, it encourages college students and young entrepreneurs to integrate internet technologies with traditional industries, fostering innovation and startups. It has grown into one of the world's largest innovation platforms, attracting millions of entries annually and bridging academia, industry, and investment."
     },
     {
-      "name": "Quantum Computing",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-tag"
+      "title": "Third Prize, The 16th National University Student Social Practice and Science Contest on Energy Saving & Emission Reduction",
+      "date": "2023-08-01",
+      "awarder": "The Organizing Committee of the National University Student Social Practice and Science Contest on Energy Saving & Emission Reduction",
+      "summary": "The National University Student Social Practice and Science Contest on Energy Saving & Emission Reduction (全国大学生节能减排社会实践与科技竞赛) is a prominent, large-scale competition. Its aim is to promote social awareness and engagement among university students in the critical areas of energy-saving and emission reduction through technological innovation and practical projects."
     },
     {
-      "name": "Quantum Information",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-envelope"
+      "title": "First Prize, Undergraduate Group of Asia and Pacific Mathematical Contest in Modeling",
+      "date": "2023-03-01",
+      "awarder": "Asia and Pacific Mathematical Contest in Modeling (APMCM) Organizing Committee",
+      "summary": "Asia and Pacific Mathematical Contest in Modeling (亚太地区大学生数学建模竞赛) is a prestigious international competition that challenges students' mathematical modeling and problem-solving skills."
     },
     {
-      "name": "Quantum Cryptography",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-hashtag"
+      "title": "Third Prize, 2020-2021 Tongji University Undergraduate Outstanding Student Scholarship",
+      "date": "2022-12-01",
+      "awarder": "Tongji University",
+      "summary": "Tongji University Undergraduate Outstanding Student Scholarship (同济大学本科生优秀学生奖学金) is a scholarship for outstanding students in Tongji University."
     },
     {
-      "name": "Quantum Communication",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-calendar"
+      "title": "Second Prize, Undergraduate Electronic Design Contest -- 2022 Embedded System Design Invitational Contest (Intel Cup)",
+      "date": "2022-08-01",
+      "awarder": "National Undergraduate Electronic Design Contest Organizing Committee",
+      "summary": "The 2022 Intel Cup Embedded System Design Invitational (英特尔杯嵌入式系统专题邀请赛) is a national competition for university students in China, focusing on innovation and practical skills in embedded system design."
     },
     {
-      "name": "Quantum Teleportation",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-clipboard-check"
+      "title": "Second Prize, 2020-2021 Tongji University Undergraduate Outstanding Student Scholarship",
+      "date": "2021-12-01",
+      "awarder": "Tongji University",
+      "summary": "Tongji University Undergraduate Outstanding Student Scholarship (同济大学本科生优秀学生奖学金) is a scholarship for outstanding students in Tongji University."
     }
   ],
   "publications": [
     {
-      "name": "Zur Elektrody/namik bewegter Körper",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1905-06-30",
-      "url": "https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies",
-      "summary": "It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source."
-    },
-    {
-      "name": "Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1905-03-18",
-      "url": "https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt",
-      "summary": "In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921."
-    },
-    {
-      "name": "Die Grundlage der allgemeinen Relativitätstheorie",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1916-03-20",
-      "url": "https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie",
-      "summary": "The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914)."
+      "name": "Effective Cloud Removal for Remote Sensing Images by an Improved Mean-Reverting Denoising Model with Elucidated Design Space",
+      "publisher": "The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2025",
+      "releaseDate": "2025-03-31",
+      "url": "https://arxiv.org/abs/2503.23717",
+      "summary": "This is the first paper published by Yi Liu in CVPR 2025. This paper is about improving diffusion models for cloud removal in remote sensing image processing. This is also the undergraduate thesis of Yi Liu, which is supervised by Associate Professor Wengen Li. This thesis also got the excellent undergraduate thesis award in College of Computer Science and Technology, Tongji University."
     }
   ],
   "skills": [
     {
-      "name": "Physics",
-      "level": "Master",
+      "name": "Programming",
       "icon": "fa-solid fa-hashtag",
       "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
+        "C/C++",
+        "Python (including PyTorch, PyTorch Lightning, numpy, etc.)",
+        "Microsoft Office (Word, Excel, PowerPoint, etc.)",
+        "Ongoing Learning: Hardware Coding (CUDA, CuTe, Triton, etc.)"
       ]
     }
   ],
@@ -146,44 +122,105 @@
     },
     {
       "language": "English",
-      "fluency": "Fluent (IELTS 7.0)",
+      "fluency": "Fluent (IELTS 7.0: Reading 8.5, Listening 7.0, Speaking 6.5, Writing 6.5)",
       "icon": ""
     }
   ],
   "interests": [
     {
-      "name": "Physics",
+      "name": "Generative Models",
       "icon": "fa-solid fa-tag",
       "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
+        "Variational Autoencoder (VAE)",
+        "Generative Adversarial Networks (GANs)",
+        "Diffusion Models",
+        "Score-based Generative Models",
+        "Flow Matching Models",
+        "Consistency Models",
+        "Autoregressive Models for Computer Vision (e.g. VAR)"
+      ]
+    },
+    {
+      "name": "Low-Level Vision (Image Restoration)",
+      "icon": "fa-solid fa-tag",
+      "keywords": [
+        "Image Denoising",
+        "Image Super-Resolution",
+        "Image Inpainting",
+        "Image Deblurring",
+        "Image Dehazing",
+        "Cloud Removal in Remote Sensing Image Processing"
+      ]
+    },
+    {
+      "name": "Efficient Deep Learning Models",
+      "icon": "fa-solid fa-tag",
+      "keywords": [
+        "Linear Attention",
+        "State Space Models (e.g. Mamba)",
+        "Hardware-Aware Optimization (e.g. quantization, kernel fusion, etc.)"
       ]
     }
   ],
   "references": [
     {
-      "name": "Professor John Doe",
+      "name": "Associate Professor Wengen Li",
       "icon": "fa-solid fa-laptop",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
-    },
-    {
-      "name": "Professor John Doe",
-      "icon": "fa-solid fa-thumbtack",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+      "reference": "Professor Wengen Li is the supervisor of Yi Liu. He is an associate professor at the College of Computer Science and Technology, Tongji University. His research interests include Multimodal Intelligence and Spatial Temporal Data Analysis."
     }
   ],
   "projects": [
     {
-      "name": "Quantum Computing",
-      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
-      "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
-      "startDate": "2018-01-01",
-      "endDate": "2018-01-01",
-      "url": "https://example.com"
+      "name": "Cloud Removal Based on Generative Models",
+      "summary": "1) Conducted systematic analysis of 100+ top-tier conference/journal papers, completing a thorough technical review and bottleneck problem analysis for diffusion models in remote sensing cloud removal tasks. 2) Proposed a novel cloud removal diffusion model with modular framework addressing pixel-level inconsistency, module coupling issues, and mono/multi-temporal compatibility, achieving SOTA performance. 3) First-author paper accepted to appear at CVPR 2025.",
+      "highlights": ["Diffusion Models", "Remote Sensing Image Processing", "Cloud Removal", "Low-Level Vision"],
+      "startDate": "2023-10-01",
+      "endDate": "2025-03-01",
+      "url": "https://arxiv.org/abs/2503.23717"
+    },
+    {
+      "name": "Compressed Image Reconstruction (Low-Level Vision)",
+      "summary": "1) Comprehensively conducted literature review on snapshot compressive imaging (SCI), analyzing 50+ top-tier conference/journal papers (CVPR/ICCV/TPAMI) to deliver a visiting report as a technical summary. 2) Independently investigated efficient architectures (linear attention, state space models), adapting these frameworks into low-level vision pipelines validated on SCI benchmarks, with findings presented at lab meetings.",
+      "highlights": ["Low-Level Vision", "Compressed Image Reconstruction", "Snapshot Compressive Imaging", "Efficient Deep Learning Models"],
+      "startDate": "2024-02-20",
+      "endDate": "2024-06-31",
+      "url": "http://Ly403.github.io/cv/#projects-1"
+    },
+    {
+      "name": "SenseAir: AI-Driven Compressed Air System Management Platform",
+      "summary": "Developed a digital twin platform integrating deep learning for air compressor maintenance; obtained software copyright and filed patent application (CN202211466896.3) based on our innovation as the first inventor.",
+      "highlights": ["Digital Twin", "Compressed Air System", "Software Copyright", "Patent Application", "Deep Learning"],
+      "startDate": "2023-03-01",
+      "endDate": "2023-09-30",
+      "url": "http://Ly403.github.io/cv/#projects-1"
+    },
+    {
+      "name": "Remote Human-Machine Co-Driving System", 
+      "summary": "1) Engaged in an in-depth study of autonomous driving. 2) Present weekly reports on the findings of literature review. 3) Authored and refined a patent application (CN202211466896.3).",
+      "highlights": ["Autonomous Driving", "Remote Human-Machine Co-Driving System", "Patent Application"],
+      "startDate": "2022-06-01",
+      "endDate": "2022-09-01",
+      "url": "http://Ly403.github.io/cv/#projects-1"
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Volunteer Work Department of Youth League Committee in Tongji University",
+      "location": "Shanghai, China",
+      "position": "Volunteer",
+      "startDate": "2021-09-01",
+      "endDate": "2023-01-01",
+      "summary": "1) Served as a dedicated long-term volunteer in the Volunteer Work Department, facilitating package deliveries across various campuses within Tongji University by following the department head's instructions. 2) Engaged in short-term volunteering opportunities during school events, with a specific focus on charity activities for education. 3) Assisted school staff during school events to provide valuable support.",
+      "url": "http://Ly403.github.io/cv/#volunteer-1"
+    },
+    {
+      "organization": "Tongji Association Center",
+      "location": "Shanghai, China",
+      "position": "Volunteer",
+      "startDate": "2020-09-01",
+      "endDate": "2022-01-01",
+      "summary": "1) Assumed the role of meeting secretary, diligently documenting meeting proceedings weekly following departmental requirements at the Tongji Association Center. Collaborated closely with co-workers to ensure accurate recording of meetings. 2) Actively contributed to the organization of various club activities, including the Club Gala and Club Carnival at Tongji University. Collaborated effectively to assist clubs in planning and executing successful events.",
+      "url": "http://Ly403.github.io/cv/#volunteer-1"
     }
   ]
 }
