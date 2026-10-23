@@ -1,0 +1,2031 @@
+---
+layout: null
+permalink: /PASPA/
+title: PASPA
+description: Persistent-state blockwise flow matching for long-horizon co-speech motion generation.
+nav: false
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="PASPA: persistent-state blockwise flow matching for long-horizon co-speech motion generation. Paper, demo, method, and BEAT2 results."
+    />
+    <meta name="theme-color" content="#f6f8fc" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PASPA | Past as State, Present as Attention" />
+    <meta
+      property="og:description"
+      content="Summarize the past. Attend to the present. Long-horizon co-speech motion generation with persistent state and blockwise bidirectional attention."
+    />
+    <link rel="canonical" href="{{ page.url | absolute_url }}" />
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <title>PASPA | Past as State, Present as Attention</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23376fb4'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='42' fill='white'%3EP%3C/text%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        --ink: #1b293a;
+        --muted: #637083;
+        --blue: #376fb4;
+        --blue-dark: #22528e;
+        --blue-soft: #edf3fc;
+        --orange: #d97e4c;
+        --line: #e0e6ef;
+        --paper: #fff;
+        --radius: 22px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: radial-gradient(ellipse 70% 620px at 13% 100px, #e9f1ff, transparent),
+          radial-gradient(ellipse 60% 580px at 98% 190px, #fff0e9, transparent), #f7f9fc;
+        font-family:
+          Inter,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Arial,
+          sans-serif;
+        font-size: 17px;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+      a:hover {
+        color: var(--blue-dark);
+      }
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+      }
+      a:focus-visible,
+      button:focus-visible,
+      video:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid var(--orange);
+        outline-offset: 5px;
+      }
+      button {
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      svg {
+        vertical-align: middle;
+      }
+      sup {
+        font-size: 0.65em;
+        line-height: 0;
+        vertical-align: super;
+        margin-left: 2px;
+      }
+      p {
+        margin: 0 0 1.15em;
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
+        margin: 0;
+        font-weight: 750;
+        letter-spacing: -0.035em;
+      }
+      h2 {
+        font-size: 34px;
+      }
+      h3 {
+        font-size: 23px;
+      }
+      section {
+        scroll-margin-top: 104px;
+      }
+      .wrap {
+        width: min(1160px, calc(100% - 56px));
+        margin-inline: auto;
+      }
+      .narrow {
+        max-width: 900px;
+        margin-inline: auto;
+      }
+      .skip-link {
+        position: fixed;
+        left: 12px;
+        top: -70px;
+        z-index: 999;
+        padding: 10px 18px;
+        background: white;
+        border: 2px solid var(--blue);
+        border-radius: 8px;
+      }
+      .skip-link:focus {
+        top: 12px;
+      }
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: rgba(255, 255, 255, 0.93);
+        border-bottom: 1px solid rgba(220, 229, 240, 0.8);
+        backdrop-filter: blur(16px);
+      }
+      .nav-inner {
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .brand {
+        font-size: 23px;
+        letter-spacing: -0.05em;
+        font-weight: 850;
+        color: var(--blue);
+      }
+      .brand-dot {
+        display: inline-block;
+        background: var(--orange);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-left: 3px;
+        margin-bottom: 2px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 26px;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 650;
+      }
+      .nav-links a {
+        color: #4e596b;
+        white-space: nowrap;
+        position: relative;
+      }
+      .nav-links a:hover,
+      .nav-links a[aria-current="location"] {
+        color: var(--blue);
+      }
+      .nav-links a[aria-current="location"]:after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        bottom: -8px;
+        left: 0;
+        right: 0;
+        background: var(--blue);
+        border-radius: 2px;
+      }
+      .hero {
+        margin-top: 48px;
+        padding: 56px 42px 37px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.96);
+        border-radius: 30px;
+        background: linear-gradient(132deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.75));
+        box-shadow: 0 18px 80px rgba(41, 69, 111, 0.06);
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 5px 14px;
+        border-radius: 100px;
+        font-size: 12px;
+        letter-spacing: 0.07em;
+        font-weight: 750;
+        text-transform: uppercase;
+        color: var(--blue);
+        background: #edf3fc;
+        border: 1px solid #dce8f7;
+      }
+      .pill-dot {
+        width: 6px;
+        height: 6px;
+        background: var(--orange);
+        border-radius: 50%;
+      }
+      .hero h1 {
+        margin-top: 23px;
+      }
+      .title-main {
+        display: block;
+        font-size: clamp(38px, 5vw, 64px);
+        line-height: 1.05;
+        letter-spacing: -0.055em;
+      }
+      .title-main em {
+        font-style: normal;
+        color: var(--blue);
+      }
+      .title-sub {
+        display: block;
+        font-size: clamp(22px, 2.8vw, 30px);
+        font-weight: 650;
+        letter-spacing: -0.035em;
+        line-height: 1.3;
+        max-width: 1000px;
+        margin: 19px auto 0;
+      }
+      .authors {
+        display: flex;
+        justify-content: center;
+        gap: 8px 22px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        font-size: 18px;
+        font-weight: 650;
+        color: var(--blue);
+      }
+      .affiliations {
+        display: flex;
+        justify-content: center;
+        gap: 7px 22px;
+        flex-wrap: wrap;
+        margin-top: 13px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .tagline {
+        font-size: 19px;
+        color: #566579;
+        margin: 27px 0 0;
+        font-weight: 500;
+      }
+      .actions {
+        margin-top: 25px;
+        display: flex;
+        gap: 11px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 19px;
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 99px;
+        font-size: 14px;
+        font-weight: 650;
+        color: var(--ink);
+        line-height: 1.4;
+        box-shadow: 0 3px 9px rgba(36, 64, 99, 0.025);
+        transition:
+          transform 0.15s,
+          border-color 0.15s;
+      }
+      .button:hover {
+        transform: translateY(-2px);
+        border-color: #a7bdd8;
+        color: var(--blue);
+      }
+      .button.primary {
+        background: var(--blue);
+        color: white;
+        border-color: var(--blue);
+      }
+      .button.primary:hover {
+        background: var(--blue-dark);
+        color: white;
+      }
+      .icon {
+        width: 16px;
+        height: 16px;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        fill: none;
+        flex: none;
+      }
+      .highlights {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1.15fr;
+        margin: 34px auto 0;
+        max-width: 900px;
+        border-top: 1px solid var(--line);
+        padding-top: 24px;
+      }
+      .highlight {
+        padding: 0 17px;
+      }
+      .highlight + .highlight {
+        border-left: 1px solid var(--line);
+      }
+      .highlight strong {
+        display: block;
+        color: var(--blue);
+        font-size: 31px;
+        line-height: 1.2;
+        letter-spacing: -0.035em;
+      }
+      .highlight:last-child strong {
+        font-size: 26px;
+        padding-top: 3px;
+      }
+      .highlight span {
+        display: block;
+        font-size: 12px;
+        font-weight: 650;
+        color: #526075;
+        margin-top: 6px;
+      }
+      .highlight small {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        margin-top: 3px;
+      }
+      .section {
+        padding-top: 83px;
+      }
+      .section-heading {
+        text-align: center;
+        max-width: 850px;
+        margin: 0 auto 30px;
+      }
+      .eyebrow {
+        font-size: 12px;
+        font-weight: 750;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--blue);
+        margin-bottom: 12px;
+      }
+      .section-heading p {
+        margin-top: 15px;
+        color: var(--muted);
+        font-size: 17px;
+      }
+      .panel {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: 0 7px 28px rgba(43, 63, 97, 0.025);
+      }
+      .figure {
+        margin: 0;
+        background: white;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        overflow: hidden;
+      }
+      .figure-image {
+        display: block;
+        width: 100%;
+        padding: 17px;
+        border: 0;
+        background: white;
+        cursor: zoom-in;
+      }
+      .figure-image img {
+        width: 100%;
+        height: auto;
+      }
+      .figure-image:hover {
+        background: #fcfdff;
+      }
+      .figure figcaption {
+        padding: 18px 25px 22px;
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--muted);
+        border-top: 1px solid #edf1f6;
+      }
+      .figure figcaption strong {
+        color: var(--ink);
+      }
+      .figure .fig-index {
+        color: var(--blue);
+        font-weight: 700;
+        font-size: 11px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        margin-right: 9px;
+      }
+      .teaser {
+        margin-top: 48px;
+      }
+      .teaser .figure-image {
+        padding: 12px;
+      }
+      .abstract {
+        padding: 35px 42px;
+        font-size: 17px;
+        line-height: 1.9;
+        text-align: justify;
+      }
+      .contributions {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 21px;
+        margin-top: 25px;
+      }
+      .contribution {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 26px 26px 29px;
+        border-top: 3px solid var(--blue);
+      }
+      .contribution:nth-child(2) {
+        border-top-color: var(--orange);
+      }
+      .contribution:nth-child(3) {
+        border-top-color: #55908b;
+      }
+      .contribution .number {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        font-weight: 750;
+        color: var(--blue);
+        margin-bottom: 18px;
+        display: block;
+      }
+      .contribution h3 {
+        font-size: 20px;
+        letter-spacing: -0.03em;
+        margin-bottom: 14px;
+      }
+      .contribution p {
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+      .video-card {
+        overflow: hidden;
+        background: #101b2c;
+        border: 1px solid #dce4ef;
+        border-radius: 22px;
+        box-shadow: 0 18px 45px rgba(32, 52, 81, 0.09);
+      }
+      video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #142437;
+        accent-color: var(--blue);
+      }
+      .video-caption {
+        background: #fff;
+        padding: 18px 23px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .video-caption strong {
+        color: var(--ink);
+      }
+      .chapters {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .chapter {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 7px 12px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .chapter time {
+        font-variant-numeric: tabular-nums;
+        color: var(--blue);
+        margin-right: 7px;
+      }
+      .chapter:hover {
+        background: var(--blue-soft);
+        border-color: #acc5e2;
+      }
+      .method-principle {
+        margin-bottom: 28px;
+      }
+      .method-principle .figure-image {
+        padding: 24px 35px;
+      }
+      .method-text {
+        max-width: 930px;
+        margin: 28px auto 35px;
+        color: var(--muted);
+        text-align: center;
+      }
+      .method-parts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 24px;
+      }
+      .method-part {
+        padding: 27px 30px;
+      }
+      .method-part .component {
+        font-size: 12px;
+        font-weight: 750;
+        color: var(--blue);
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      .method-part:last-child .component {
+        color: var(--orange);
+      }
+      .method-part h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+      }
+      .method-part p {
+        font-size: 15px;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+      .rollout {
+        margin-top: 31px;
+        padding: 30px;
+      }
+      .rollout h3 {
+        font-size: 24px;
+        margin-bottom: 9px;
+      }
+      .rollout > p {
+        font-size: 15px;
+        color: var(--muted);
+      }
+      .rollout-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 23px;
+      }
+      .rollout-step {
+        position: relative;
+        background: #f1f5fc;
+        border: 1px solid #dce7f5;
+        border-radius: 13px;
+        padding: 17px 17px 19px;
+        font-size: 14px;
+        font-weight: 650;
+        line-height: 1.5;
+      }
+      .rollout-step b {
+        display: block;
+        font-size: 11px;
+        color: var(--blue);
+        margin-bottom: 8px;
+      }
+      .rollout-step:nth-child(2) {
+        background: #fff3eb;
+        border-color: #f0d5c3;
+      }
+      .rollout-step:nth-child(2) b {
+        color: #bd7141;
+      }
+      .training-notes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-top: 26px;
+      }
+      .training-notes h4 {
+        margin: 0 0 8px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .training-notes p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+      .table-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 23px;
+      }
+      .table-panel {
+        overflow: hidden;
+      }
+      .table-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 23px;
+        border-bottom: 1px solid var(--line);
+        background: #fbfcff;
+      }
+      .table-title h3 {
+        font-size: 19px;
+        letter-spacing: -0.025em;
+      }
+      .table-title span {
+        font-size: 11px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .table-scroll {
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        font-variant-numeric: tabular-nums;
+      }
+      th {
+        text-align: right;
+        padding: 13px 12px;
+        background: #f8fafd;
+        border-bottom: 1px solid var(--line);
+        font-size: 11px;
+        line-height: 1.4;
+        font-weight: 750;
+        white-space: nowrap;
+      }
+      th:first-child,
+      td:first-child {
+        text-align: left;
+        padding-left: 23px;
+      }
+      td {
+        text-align: right;
+        padding: 11px 12px;
+        border-bottom: 1px solid #edf1f6;
+        white-space: nowrap;
+      }
+      th:last-child,
+      td:last-child {
+        padding-right: 23px;
+      }
+      tbody tr:last-child td {
+        border-bottom: 0;
+      }
+      tbody tr:hover {
+        background: #fafcff;
+      }
+      tbody .ours {
+        background: #edf3fc;
+        font-weight: 700;
+        color: #245c9d;
+      }
+      tbody .ours:hover {
+        background: #e5effc;
+      }
+      .metric-best {
+        font-weight: 800;
+        color: var(--blue-dark);
+      }
+      .table-note {
+        font-size: 12px;
+        line-height: 1.75;
+        color: var(--muted);
+        margin: 19px 2px 0;
+      }
+      .result-summary {
+        display: flex;
+        gap: 24px;
+        padding: 24px 28px;
+        margin-bottom: 25px;
+        align-items: center;
+      }
+      .result-mark {
+        font-size: 35px;
+        font-weight: 750;
+        color: var(--blue);
+        letter-spacing: -0.04em;
+        line-height: 1.2;
+        flex: none;
+      }
+      .result-summary p {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .long-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 27px;
+        align-items: start;
+      }
+      .long-copy {
+        padding: 7px 10px 0 0;
+      }
+      .long-copy h3 {
+        font-size: 25px;
+        margin-bottom: 17px;
+      }
+      .long-copy p {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.85;
+      }
+      .cache-note {
+        margin-top: 24px;
+        border-left: 3px solid var(--blue);
+        padding: 4px 0 4px 18px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .cache-note strong {
+        display: block;
+        color: var(--ink);
+        margin-bottom: 5px;
+      }
+      .long-table th,
+      .long-table td {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+      .long-table th:first-child,
+      .long-table td:first-child {
+        padding-left: 19px;
+      }
+      .long-table th:last-child,
+      .long-table td:last-child {
+        padding-right: 19px;
+      }
+      .long-table td {
+        font-size: 12px;
+      }
+      .long-table th {
+        font-size: 10px;
+      }
+      .long-table thead tr:first-child th {
+        text-align: center;
+      }
+      .long-table thead tr:first-child th:first-child {
+        text-align: left;
+      }
+      .qualitative {
+        margin-top: 30px;
+      }
+      .citation-panel {
+        overflow: hidden;
+      }
+      .citation-top {
+        padding: 19px 24px;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+      }
+      .citation-top span {
+        font-size: 13px;
+        font-weight: 650;
+        color: var(--muted);
+      }
+      .copy-button {
+        font-size: 12px;
+        background: #fff;
+        border: 1px solid #d8e1ec;
+        border-radius: 8px;
+        padding: 7px 12px;
+        min-width: 92px;
+      }
+      .copy-button:hover {
+        background: var(--blue-soft);
+      }
+      pre {
+        margin: 0;
+        padding: 25px 27px 29px;
+        overflow-x: auto;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 12px;
+        line-height: 1.9;
+        color: #40546c;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        background: #fbfcff;
+      }
+      .footer {
+        padding: 56px 0 35px;
+        text-align: center;
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.9;
+      }
+      .footer strong {
+        font-size: 14px;
+        color: var(--blue);
+        font-weight: 750;
+      }
+      .footer a {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .lightbox {
+        border: 0;
+        padding: 0;
+        border-radius: 15px;
+        max-width: min(95vw, 2200px);
+        max-height: 94vh;
+        background: #fff;
+        box-shadow: 0 20px 90px #0005;
+      }
+      .lightbox::backdrop {
+        background: rgba(12, 22, 39, 0.72);
+        backdrop-filter: blur(6px);
+      }
+      .lightbox img {
+        max-height: 84vh;
+        max-width: 94vw;
+        width: auto;
+        object-fit: contain;
+        margin: 45px auto 20px;
+        padding: 0 15px;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 9px;
+        right: 12px;
+        z-index: 2;
+        border: 1px solid #dce3eb;
+        border-radius: 50%;
+        background: white;
+        width: 31px;
+        height: 31px;
+        font-size: 21px;
+        line-height: 1;
+      }
+      .lightbox-title {
+        position: absolute;
+        top: 9px;
+        left: 16px;
+        font-size: 12px;
+        color: var(--muted);
+        margin: 0;
+        max-width: 80%;
+      }
+      .status {
+        min-height: 1em;
+      }
+      .brand-group {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-shrink: 0;
+      }
+      .home-link {
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      .brand {
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .nav-links {
+        min-width: 0;
+      }
+      .long-layout > * {
+        min-width: 0;
+      }
+      .table-scroll {
+        max-width: 100%;
+      }
+      tbody th {
+        background: transparent;
+        font-size: inherit;
+        font-weight: 500;
+        padding-top: 11px;
+        padding-bottom: 11px;
+        border-bottom: 1px solid #edf1f6;
+      }
+      tbody tr:last-child th {
+        border-bottom: 0;
+      }
+      tbody .ours {
+        font-weight: 400;
+      }
+      tbody .ours th {
+        font-weight: 750;
+      }
+      @media (min-width: 1450px) {
+        .hero {
+          padding-top: 64px;
+        }
+        .section {
+          padding-top: 91px;
+        }
+      }
+      @media (max-width: 1000px) {
+        .nav-links {
+          gap: 18px;
+          font-size: 13px;
+        }
+        .title-main {
+          font-size: 52px;
+        }
+        .hero {
+          padding-inline: 28px;
+        }
+        .authors {
+          font-size: 16px;
+          gap: 8px 17px;
+        }
+        .table-pair {
+          grid-template-columns: 1fr;
+        }
+        .contribution {
+          padding: 23px 20px;
+        }
+        .contribution h3 {
+          font-size: 18px;
+        }
+        .long-layout {
+          grid-template-columns: 1fr;
+        }
+        .long-copy {
+          max-width: 850px;
+        }
+        .long-copy p {
+          font-size: 16px;
+        }
+        .rollout-steps {
+          gap: 10px;
+        }
+        .rollout-step {
+          padding: 14px;
+          font-size: 13px;
+        }
+      }
+      @media (max-width: 700px) {
+        body {
+          font-size: 16px;
+        }
+        .wrap {
+          width: calc(100% - 30px);
+        }
+        .nav-inner {
+          gap: 12px;
+          min-height: 59px;
+        }
+        .brand {
+          font-size: 20px;
+        }
+        .nav-links {
+          gap: 17px;
+          overflow: auto;
+          scrollbar-width: none;
+          font-size: 12px;
+          padding: 16px 1px;
+        }
+        .nav-links::-webkit-scrollbar {
+          display: none;
+        }
+        .nav-links a:first-child {
+          display: none;
+        }
+        .nav-links a[aria-current="location"]:after {
+          bottom: -4px;
+        }
+        .hero {
+          margin-top: 24px;
+          border-radius: 23px;
+          padding: 34px 18px 26px;
+        }
+        .pill {
+          font-size: 10px;
+        }
+        .title-main {
+          font-size: clamp(33px, 8vw, 48px);
+          letter-spacing: -0.05em;
+        }
+        .title-sub {
+          font-size: 20px;
+          margin-top: 17px;
+          line-height: 1.36;
+        }
+        .title-sub br {
+          display: none;
+        }
+        .authors {
+          margin-top: 25px;
+          font-size: 15px;
+          gap: 9px 16px;
+        }
+        .affiliations {
+          font-size: 12px;
+          gap: 7px 16px;
+          max-width: 340px;
+          margin: 15px auto 0;
+        }
+        .tagline {
+          font-size: 15px;
+          margin-top: 23px;
+        }
+        .button {
+          font-size: 12px;
+          padding: 9px 14px;
+        }
+        .actions {
+          gap: 8px;
+          margin-top: 20px;
+        }
+        .highlights {
+          padding-top: 21px;
+          margin-top: 27px;
+          grid-template-columns: 1fr 1fr;
+        }
+        .highlight {
+          padding: 0 8px;
+        }
+        .highlight strong {
+          font-size: 28px;
+        }
+        .highlight span {
+          font-size: 10px;
+          line-height: 1.5;
+        }
+        .highlight small {
+          font-size: 10px;
+          line-height: 1.5;
+        }
+        .highlight:last-child {
+          display: none;
+        }
+        .section {
+          padding-top: 56px;
+        }
+        .section-heading {
+          margin-bottom: 23px;
+        }
+        .section-heading h2 {
+          font-size: 29px;
+        }
+        .section-heading p {
+          font-size: 15px;
+        }
+        .eyebrow {
+          font-size: 10px;
+          margin-bottom: 9px;
+        }
+        .teaser {
+          margin-top: 28px;
+        }
+        .figure {
+          border-radius: 15px;
+        }
+        .figure-image,
+        .teaser .figure-image {
+          padding: 7px;
+        }
+        .figure figcaption {
+          font-size: 12px;
+          padding: 14px 16px 16px;
+        }
+        .figure .fig-index {
+          font-size: 10px;
+        }
+        .abstract {
+          padding: 23px 23px;
+          font-size: 15px;
+          line-height: 1.85;
+          text-align: left;
+        }
+        .contributions {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+        .contribution {
+          padding: 23px;
+        }
+        .contribution .number {
+          margin-bottom: 11px;
+        }
+        .contribution h3 {
+          font-size: 20px;
+        }
+        .contribution p {
+          font-size: 14px;
+        }
+        .video-card {
+          border-radius: 15px;
+        }
+        .video-caption {
+          padding: 13px 15px;
+          align-items: flex-start;
+          font-size: 11px;
+          gap: 10px;
+        }
+        .video-caption > span:last-child {
+          white-space: nowrap;
+        }
+        .chapter {
+          font-size: 10px;
+          padding: 7px 8px;
+        }
+        .chapters {
+          gap: 6px;
+          margin-top: 13px;
+        }
+        .chapter time {
+          margin-right: 4px;
+        }
+        .method-principle .figure-image {
+          padding: 10px;
+        }
+        .method-text {
+          margin: 20px auto 25px;
+          font-size: 15px;
+          text-align: left;
+        }
+        .method-parts {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+        .method-part {
+          padding: 23px;
+        }
+        .method-part h3 {
+          font-size: 21px;
+        }
+        .method-part p {
+          font-size: 14px;
+        }
+        .rollout {
+          padding: 23px;
+        }
+        .rollout h3 {
+          font-size: 22px;
+        }
+        .rollout-steps {
+          grid-template-columns: 1fr 1fr;
+          gap: 11px;
+        }
+        .rollout-step {
+          font-size: 13px;
+          padding: 14px;
+        }
+        .training-notes {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .result-summary {
+          padding: 21px;
+          align-items: flex-start;
+          gap: 17px;
+        }
+        .result-mark {
+          font-size: 29px;
+        }
+        .result-summary p {
+          font-size: 13px;
+        }
+        .table-title {
+          padding: 18px 19px;
+        }
+        .table-title h3 {
+          font-size: 18px;
+        }
+        .table-title span {
+          font-size: 10px;
+        }
+        table {
+          font-size: 11px;
+        }
+        th {
+          font-size: 10px;
+          padding-inline: 10px;
+        }
+        td {
+          padding: 10px;
+        }
+        th:first-child,
+        td:first-child {
+          padding-left: 17px;
+        }
+        th:last-child,
+        td:last-child {
+          padding-right: 17px;
+        }
+        .table-note {
+          font-size: 11px;
+          margin-top: 14px;
+        }
+        .long-copy {
+          padding: 0;
+        }
+        .long-copy h3 {
+          font-size: 23px;
+        }
+        .long-copy p {
+          font-size: 14px;
+        }
+        .long-layout {
+          gap: 22px;
+        }
+        .long-table {
+          min-width: 460px;
+        }
+        .long-table td {
+          font-size: 11px;
+        }
+        .qualitative {
+          margin-top: 22px;
+        }
+        .citation-top {
+          padding: 15px 18px;
+        }
+        .citation-top span {
+          font-size: 11px;
+        }
+        pre {
+          font-size: 11px;
+          padding: 21px;
+          line-height: 1.8;
+        }
+        .footer {
+          padding-top: 39px;
+          font-size: 11px;
+        }
+        .lightbox {
+          max-width: 98vw;
+        }
+        .lightbox img {
+          max-width: 98vw;
+          padding: 0 5px;
+        }
+      }
+      @media (max-width: 700px) {
+        .authors {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px 12px;
+        }
+        .authors > span {
+          white-space: nowrap;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        * {
+          transition: none !important;
+        }
+      }
+      @media print {
+        .nav,
+        .actions,
+        .chapters,
+        .video-card,
+        .footer,
+        .copy-button {
+          display: none;
+        }
+        .hero {
+          box-shadow: none;
+          margin-top: 0;
+        }
+        .section {
+          padding-top: 30px;
+        }
+        .wrap {
+          width: 100%;
+        }
+        .panel,
+        .figure {
+          break-inside: avoid;
+        }
+        .figure-image {
+          padding: 0;
+        }
+        body {
+          background: white;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none" aria-hidden="true">
+      <symbol id="i-paper" viewBox="0 0 24 24">
+        <path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z M14 3v5h5 M8 12h8 M8 16h8" />
+      </symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z" fill="currentColor" stroke="none" /></symbol>
+      <symbol id="i-method" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="6" height="6" rx="1" />
+        <rect x="15" y="14" width="6" height="6" rx="1" />
+        <path d="M9 7h6v10 M3 17h12" />
+      </symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 3v17h17 M8 16v-5 M13 16V6 M18 16V9" /></symbol>
+      <symbol id="i-quote" viewBox="0 0 24 24"><path d="M10 6H4v7h5c0 3-2 5-4 5 M21 6h-6v7h5c0 3-2 5-4 5" /></symbol>
+    </svg>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <div class="brand-group">
+          <a class="home-link" href="{{ '/' | relative_url }}" aria-label="Back to Yi Liu's homepage">← Home</a
+          ><a class="brand" href="#overview" aria-label="PASPA overview">PASPA<span class="brand-dot"></span></a>
+        </div>
+        <nav class="nav-links" aria-label="Project sections">
+          <a href="#overview">Overview</a><a href="#abstract">Abstract</a><a href="#demo">Demo</a><a href="#method">Method</a
+          ><a href="#results">Results</a><a href="#citation">Citation</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="wrap">
+      <section class="hero" id="overview" aria-labelledby="project-title">
+        <span class="pill"><span class="pill-dot"></span>PASPA · NeurIPS 2026</span>
+        <h1 id="project-title">
+          <span class="title-main"
+            >Past as State,<br />
+            <em>Present as Attention:</em></span
+          >
+          <span class="title-sub"
+            >Persistent-State Blockwise Flow Matching<br />
+            for Long-Horizon Co-Speech Motion Generation</span
+          >
+        </h1>
+        <div class="authors">
+          <span>Yi Liu<sup>1,3</sup></span
+          ><span><a href="https://xiangyuezhang.com/" target="_blank" rel="noopener noreferrer">Xiangyue Zhang</a><sup>2</sup></span
+          ><span>Jianfang Li<sup>3*</sup></span
+          ><span>Jia Ma<sup>1</sup></span
+          ><span>Yisheng He<sup>3</sup></span
+          ><span>Jianqiang Ren<sup>3</sup></span>
+        </div>
+        <div class="affiliations">
+          <span><sup>1</sup> Tongji University</span><span><sup>2</sup> The University of Tokyo</span><span><sup>3</sup> Alibaba Group</span>
+        </div>
+        <p class="corresponding-note" style="margin: 9px 0 0; font-size: 12px; color: var(--muted)">* Corresponding author</p>
+        <p class="tagline">Summarize the past. Attend to the present.</p>
+        <div class="actions">
+          <a class="button primary" id="paper-download" href="{{ '/assets/pdf/PASPA-Manuscript.pdf' | relative_url }}" download="PASPA-Manuscript.pdf"
+            ><svg class="icon"><use href="#i-paper" /></svg>Manuscript</a
+          ><a class="button" href="#demo"
+            ><svg class="icon"><use href="#i-play" /></svg>Demo</a
+          ><a class="button" href="#method"
+            ><svg class="icon"><use href="#i-method" /></svg>Method</a
+          ><a class="button" href="#results"
+            ><svg class="icon"><use href="#i-chart" /></svg>Results</a
+          ><a class="button" href="#citation"
+            ><svg class="icon"><use href="#i-quote" /></svg>BibTeX</a
+          >
+        </div>
+        <div class="highlights" aria-label="Key results">
+          <div class="highlight"><strong>3.71</strong><span>FGD ×10 ↓ · Single speaker</span><small>22.4% lower than GlobalDiff</small></div>
+          <div class="highlight"><strong>2.33</strong><span>FGD ×10 ↓ · All speakers</span><small>11.4% lower than GlobalDiff</small></div>
+          <div class="highlight">
+            <strong>Fixed-size state</strong><span>Persistent history cache</span><small>Long rollouts without growing history tokens</small>
+          </div>
+        </div>
+      </section>
+      <figure class="figure teaser">
+        <button class="figure-image zoom" aria-label="Enlarge the 52-second style consistency comparison">
+          <img
+            src="{{ '/assets/img/publication_preview/PASPA.png' | relative_url }}"
+            width="1998"
+            height="1083"
+            alt="A 52-second comparison: short-seed truncation gradually shifts style, long-context token attention underuses distant style, and PASPA maintains the speaker's hand-near-chest style."
+          />
+        </button>
+        <figcaption>
+          <span class="fig-index">Figure 1</span><strong>Long speech, consistent style.</strong> The same speech and speaker are followed over 52
+          seconds. PASPA carries slowly varying style through a persistent state while using attention to model the local details of the current
+          block.
+        </figcaption>
+      </figure>
+      <section class="section" id="abstract" aria-labelledby="abstract-title">
+        <div class="section-heading">
+          <div class="eyebrow">Overview</div>
+          <h2 id="abstract-title">Abstract</h2>
+        </div>
+        <div class="panel abstract">
+          Co-speech motion generation remains challenging over long horizons due to the need for temporal coherence and consistent style. Existing
+          methods typically generate long motions segment by segment, either conditioning on a short seed of recent frames, which gradually drifts, or
+          retaining ever-longer explicit histories, which are costly to maintain and hard to learn from limited data. We trace these limitations to a
+          key asymmetry between past and present: past motion carries slowly varying style that should be compactly summarized, whereas the current
+          segment exhibits fast-changing local dynamics that require fine-grained modeling. This asymmetry motivates a simple Past-As-State,
+          Present-as-Attention principle for long-horizon co-speech motion generation. Following this principle, we propose PASPA, which summarizes
+          past history with an inter-block persistent state and models the current segment with intra-block bidirectional self-attention. We
+          instantiate PASPA within a blockwise flow matching framework, with multi-block supervision for effective training over variable histories,
+          prefill-decode state caching for efficient rollout, and hybrid classifier-free guidance for enhanced history and speech conditioning.
+          Extensive public-benchmark experiments show that PASPA achieves state-of-the-art FGD performance and preserves motion style across
+          long-sequence generation.
+        </div>
+      </section>
+      <section class="section" id="contributions" aria-labelledby="contributions-title">
+        <div class="section-heading">
+          <div class="eyebrow">Contributions</div>
+          <h2 id="contributions-title">The past carries style.<br />The present carries detail.</h2>
+        </div>
+        <div class="contributions">
+          <article class="contribution">
+            <span class="number">01</span>
+            <h3>Different roles, different representations</h3>
+            <p>
+              We identify an asymmetry between slowly varying style in past motion and fast-changing dynamics in the current segment, and formulate
+              the past-as-state, present-as-attention principle.
+            </p>
+          </article>
+          <article class="contribution">
+            <span class="number">02</span>
+            <h3>A persistent-state motion generator</h3>
+            <p>
+              PASPA combines blockwise Gated DeltaNet for history propagation with intra-block bidirectional attention, within a semi-autoregressive
+              blockwise flow matching framework.
+            </p>
+          </article>
+          <article class="contribution">
+            <span class="number">03</span>
+            <h3>Training and rollout for long horizons</h3>
+            <p>
+              Multi-block supervision learns from variable history lengths. Prefill-decode separation reuses a fixed-size state cache, while hybrid
+              classifier-free guidance controls speech conditioning and historical dependence.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="section" id="demo" aria-labelledby="demo-title">
+        <div class="section-heading">
+          <div class="eyebrow">Video</div>
+          <h2 id="demo-title">See PASPA in motion</h2>
+          <p>A narrated introduction, method animations, and speech-driven comparisons with prior methods.</p>
+        </div>
+        <div class="video-card">
+          <video
+            id="demo-video"
+            controls
+            playsinline
+            preload="metadata"
+            poster="{{ '/assets/paspa/demo-poster.jpg' | relative_url }}"
+            aria-label="PASPA paper introduction and motion generation demo, 3 minutes 6 seconds"
+          >
+            <source src="{{ '/assets/video/paspa-demo.mp4' | relative_url }}" type="video/mp4" />
+            Your browser does not support this video format.
+          </video>
+          <div class="video-caption">
+            <span
+              ><strong>GT · PASPA · Semtalk · GestureLSM · EMAGE</strong><br />Original speech and comparison labels are preserved in the result
+              sequences.</span
+            ><span>3:06 · English narration</span>
+          </div>
+        </div>
+        <div class="chapters" aria-label="Video chapters">
+          <button class="chapter" data-time="0"><time>0:00</time>Introduction</button
+          ><button class="chapter" data-time="19"><time>0:19</time>Contributions</button
+          ><button class="chapter" data-time="31"><time>0:31</time>Method</button
+          ><button class="chapter" data-time="81"><time>1:21</time>50 s comparison</button
+          ><button class="chapter" data-time="131"><time>2:11</time>More results</button>
+        </div>
+      </section>
+      <section class="section" id="method" aria-labelledby="method-title">
+        <div class="section-heading">
+          <div class="eyebrow">Method</div>
+          <h2 id="method-title">Past as state. Present as attention.</h2>
+          <p>A compact summary of completed motion conditions a bidirectional model of each new block.</p>
+        </div>
+        <figure class="figure method-principle">
+          <button class="figure-image zoom" aria-label="Enlarge the past-as-state present-as-attention principle">
+            <img
+              src="{{ '/assets/paspa/principle.png' | relative_url }}"
+              width="1980"
+              height="676"
+              loading="lazy"
+              alt="History propagation alternatives: short-seed truncation, long-context token attention, and PASPA's persistent state with current-block bidirectional attention."
+            />
+          </button>
+          <figcaption>
+            <span class="fig-index">Figure 2</span><strong>Different roles call for different representations.</strong> Instead of dropping distant
+            history or retaining every past token for attention, PASPA summarizes the past in state and applies full attention inside the current
+            block.
+          </figcaption>
+        </figure>
+        <p class="method-text">
+          Motion is generated semi-autoregressively, one block at a time, with blockwise flow matching. The history state provides a stable context;
+          bidirectional interactions within the current block capture fast-changing dynamics and fine articulation.
+        </p>
+        <figure class="figure">
+          <button class="figure-image zoom" aria-label="Enlarge the full PASPA network architecture">
+            <img
+              src="{{ '/assets/paspa/architecture.png' | relative_url }}"
+              width="1995"
+              height="1079"
+              loading="lazy"
+              alt="PASPA network architecture: blockwise Gated DeltaNet propagates history through a persistent state; blockwise multi-head self-attention models local motion; speech and speaker identity condition motion and expression generation."
+            />
+          </button>
+          <figcaption>
+            <span class="fig-index">Figure 4</span><strong>The PASPA architecture.</strong> BGDN propagates clean history through a block-causal
+            persistent state. BMHSA provides bidirectional attention within each current block. The generation layers are conditioned on speech and
+            speaker identity.
+          </figcaption>
+        </figure>
+        <div class="method-parts">
+          <article class="panel method-part">
+            <div class="component">BGDN</div>
+            <h3>Carry the past as a persistent state</h3>
+            <p>
+              BGDN summarizes clean past motion into a fixed-size recurrent state. Every query in a block reads the block-start state, enforcing
+              access to strict past history while retaining slowly varying stylistic information.
+            </p>
+          </article>
+          <article class="panel method-part">
+            <div class="component">BMHSA</div>
+            <h3>Model the present with bidirectional attention</h3>
+            <p>
+              BMHSA allows full interaction among frames inside the current block to capture local dynamics and fine articulation, while forbidding
+              direct attention across blocks.
+            </p>
+          </article>
+        </div>
+        <div class="panel rollout">
+          <h3>Decode a block. Update the state. Continue.</h3>
+          <p>The history cache stays fixed-size as the rollout grows.</p>
+          <div class="rollout-steps">
+            <div class="rollout-step"><b>01 · READ</b>Read the cached state from completed motion.</div>
+            <div class="rollout-step"><b>02 · DECODE</b>Generate the current block with flow matching.</div>
+            <div class="rollout-step"><b>03 · PREFILL</b>Update state once with the clean block.</div>
+            <div class="rollout-step"><b>04 · CONTINUE</b>Reuse the state for the next motion block.</div>
+          </div>
+          <div class="training-notes">
+            <div>
+              <h4>Multi-block supervision</h4>
+              <p>
+                Train clean-motion predictions over multiple blocks at different noise levels. Weakly monotonic timesteps and adaptive loss weighting
+                support learning across history lengths.
+              </p>
+            </div>
+            <div>
+              <h4>Hybrid classifier-free guidance</h4>
+              <p>
+                Jointly guide speech/expression conditioning and historical dependence, including their interaction, while reusing the cached history
+                state during decoding.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="results" aria-labelledby="results-title">
+        <div class="section-heading">
+          <div class="eyebrow">BEAT2 benchmark</div>
+          <h2 id="results-title">Lower FGD in both speaker settings</h2>
+          <p>PASPA achieves the best FGD among the methods compared in the manuscript.</p>
+        </div>
+        <div class="panel result-summary">
+          <div class="result-mark">22.4%<br /><span style="font-size: 18px">11.4%</span></div>
+          <p>
+            Relative FGD reduction against GlobalDiff for the single-speaker and all-speaker settings, respectively. PASPA also has the lowest
+            reported facial-expression MSE among the compared methods that report this metric.
+          </p>
+        </div>
+        <div class="table-pair">
+          <div class="panel table-panel">
+            <div class="table-title">
+              <h3>Single speaker</h3>
+              <span>BEAT2 · Table 1</span>
+            </div>
+            <div class="table-scroll">
+              <table aria-label="BEAT2 single speaker results">
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">FGD ↓ (×10)</th>
+                    <th scope="col">BC ↑</th>
+                    <th scope="col">Div ↑</th>
+                    <th scope="col">MSE ↓ (×10<sup>8</sup>)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">CaMN</th>
+                    <td>6.64</td>
+                    <td>0.677</td>
+                    <td>10.86</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DSG</th>
+                    <td>8.81</td>
+                    <td>0.724</td>
+                    <td>11.49</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">EMAGE</th>
+                    <td>5.51</td>
+                    <td>0.772</td>
+                    <td>13.06</td>
+                    <td>7.680</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DiffSHEG</th>
+                    <td>8.99</td>
+                    <td>0.714</td>
+                    <td>11.91</td>
+                    <td>7.665</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">MambaTalk</th>
+                    <td>5.37</td>
+                    <td>0.781</td>
+                    <td>13.05</td>
+                    <td>6.289</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">HoloGest</th>
+                    <td>5.34</td>
+                    <td class="metric-best">0.795</td>
+                    <td class="metric-best">14.15</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">RAG-GESTURE</th>
+                    <td>8.08</td>
+                    <td>0.734</td>
+                    <td>11.97</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SemTalk</th>
+                    <td>4.28</td>
+                    <td>0.777</td>
+                    <td>12.91</td>
+                    <td>6.153</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">GestureLSM</th>
+                    <td>4.09</td>
+                    <td>0.714</td>
+                    <td>13.24</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">GlobalDiff</th>
+                    <td>4.78</td>
+                    <td>0.705</td>
+                    <td>13.13</td>
+                    <td>6.330</td>
+                  </tr>
+                  <tr class="ours">
+                    <th scope="row">PASPA (Ours)</th>
+                    <td class="metric-best">3.71</td>
+                    <td>0.746</td>
+                    <td>13.38</td>
+                    <td class="metric-best">5.768</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel table-panel">
+            <div class="table-title">
+              <h3>All speakers</h3>
+              <span>BEAT2 · Table 1</span>
+            </div>
+            <div class="table-scroll">
+              <table aria-label="BEAT2 all speakers results">
+                <thead>
+                  <tr>
+                    <th scope="col">Method</th>
+                    <th scope="col">FGD ↓ (×10)</th>
+                    <th scope="col">BC ↑</th>
+                    <th scope="col">Div ↑</th>
+                    <th scope="col">MSE ↓ (×10<sup>8</sup>)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">CaMN</th>
+                    <td>5.12</td>
+                    <td>0.200</td>
+                    <td>5.58</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DSG</th>
+                    <td>11.74</td>
+                    <td>0.734</td>
+                    <td>11.12</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">EMAGE</th>
+                    <td>6.92</td>
+                    <td>0.284</td>
+                    <td>6.06</td>
+                    <td>6.908</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">DiffSHEG</th>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">MambaTalk</th>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">HoloGest</th>
+                    <td>6.46</td>
+                    <td class="metric-best">0.803</td>
+                    <td class="metric-best">13.53</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">RAG-GESTURE</th>
+                    <td>4.87</td>
+                    <td>0.514</td>
+                    <td>9.94</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">SemTalk</th>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">GestureLSM</th>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">GlobalDiff</th>
+                    <td>2.63</td>
+                    <td>0.404</td>
+                    <td>8.24</td>
+                    <td>4.144</td>
+                  </tr>
+                  <tr class="ours">
+                    <th scope="row">PASPA (Ours)</th>
+                    <td class="metric-best">2.33</td>
+                    <td>0.645</td>
+                    <td>9.42</td>
+                    <td class="metric-best">3.793</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <p class="table-note">
+          <strong>Table 1.</strong> Values are reproduced from the manuscript. FGD and facial-expression MSE use the reported scales (×10 and
+          ×10<sup>8</sup>). ↓ / ↑ means lower / higher is better under this evaluation. An em dash denotes an unreported value. The blue row denotes
+          PASPA; bold numbers mark the best values in each column.
+        </p>
+        <figure class="figure qualitative">
+          <button class="figure-image zoom" aria-label="Enlarge the qualitative motion comparison">
+            <img
+              src="{{ '/assets/paspa/comparison.png' | relative_url }}"
+              width="1992"
+              height="726"
+              loading="lazy"
+              alt="Qualitative examples comparing ground truth, PASPA, Semtalk, GestureLSM and EMAGE for gesture direction, amplitude and semantic alignment."
+            />
+          </button>
+          <figcaption>
+            <span class="fig-index">Figure 5</span><strong>What the numbers look like.</strong> Selected speech segments compare gesture direction,
+            amplitude, and speech alignment. PASPA is shown alongside ground truth, SemTalk, GestureLSM, and EMAGE; the original annotations highlight
+            differences in gesture and hand articulation.
+          </figcaption>
+        </figure>
+      </section>
+      <section class="section" id="long-horizon" aria-labelledby="long-title">
+        <div class="section-heading">
+          <div class="eyebrow">Long-horizon generation</div>
+          <h2 id="long-title">Keep the style as the sequence grows</h2>
+        </div>
+        <div class="long-layout">
+          <div class="long-copy">
+            <h3>History should carry more than recent frames.</h3>
+            <p>
+              In the dedicated long-rollout evaluation, PASPA has the lowest terminal-window FGD at 30 and 60 seconds and preserves the highest
+              diversity among the three history mechanisms.
+            </p>
+            <p>
+              The 52-second sequence above illustrates the same idea: the speaker's characteristic hand spacing remains visible across distant
+              moments.
+            </p>
+            <div class="cache-note">
+              <strong>A fixed-size history state</strong>Clean motion updates the persistent state between blocks. The state does not grow into an
+              ever-longer token history.
+            </div>
+          </div>
+          <div>
+            <div class="panel table-panel">
+              <div class="table-title">
+                <h3>Terminal-window evaluation</h3>
+                <span>Table 5</span>
+              </div>
+              <div class="table-scroll">
+                <table class="long-table" aria-label="Long-horizon generation terminal-window results">
+                  <thead>
+                    <tr>
+                      <th rowspan="2" scope="col">Method</th>
+                      <th colspan="2" scope="colgroup">0–10 s</th>
+                      <th colspan="2" scope="colgroup">20–30 s</th>
+                      <th colspan="2" scope="colgroup">50–60 s</th>
+                    </tr>
+                    <tr>
+                      <th scope="col">FGD ↓</th>
+                      <th scope="col">Div ↑</th>
+                      <th scope="col">FGD ↓</th>
+                      <th scope="col">Div ↑</th>
+                      <th scope="col">FGD ↓</th>
+                      <th scope="col">Div ↑</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Short Seed</th>
+                      <td>4.731</td>
+                      <td>6.581</td>
+                      <td>5.886</td>
+                      <td>6.033</td>
+                      <td>6.721</td>
+                      <td>6.081</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Token Attention</th>
+                      <td>4.448</td>
+                      <td>6.289</td>
+                      <td>5.388</td>
+                      <td>6.510</td>
+                      <td>5.771</td>
+                      <td>6.427</td>
+                    </tr>
+                    <tr class="ours">
+                      <th scope="row">PASPA</th>
+                      <td>4.448</td>
+                      <td>7.217</td>
+                      <td>5.119</td>
+                      <td>7.133</td>
+                      <td>5.745</td>
+                      <td>7.138</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <p class="table-note">
+              Metrics are evaluated in the final 10-second window of 10, 30, and 60-second rollouts. This is a separate protocol from Table 1. FGD ×10
+              ↓; Div ↑.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="section narrow" id="citation" aria-labelledby="citation-title">
+        <div class="section-heading">
+          <div class="eyebrow">Reference</div>
+          <h2 id="citation-title">BibTeX</h2>
+        </div>
+        <div class="panel citation-panel">
+          <div class="citation-top">
+            <span>Past as State, Present as Attention</span
+            ><button class="copy-button" id="copy-citation" aria-label="Copy BibTeX citation">Copy BibTeX</button>
+          </div>
+          <pre id="bibtex">
+@misc{liu2026paspa,
+  title = {Past as State, Present as Attention: Persistent-State Blockwise Flow Matching for Long-Horizon Co-Speech Motion Generation},
+  author = {Liu, Yi and Zhang, Xiangyue and Li, Jianfang and Ma, Jia and He, Yisheng and Ren, Jianqiang},
+  year = {2026}
+}</pre
+          >
+        </div>
+        <div class="status" id="copy-status" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+    <footer class="footer wrap">
+      <a href="{{ '/' | relative_url }}">Yi Liu's Homepage</a><br /><strong>PASPA</strong><br />Past as State, Present as Attention<br /><span
+        >Project page layout inspired by
+        <a href="https://xiangyuezhang.com/StreamTalk/" target="_blank" rel="noopener noreferrer">StreamTalk</a>.</span
+      >
+    </footer>
+    <dialog class="lightbox" id="figure-dialog" aria-labelledby="figure-dialog-title">
+      <p class="lightbox-title" id="figure-dialog-title">Paper figure</p>
+      <button class="lightbox-close" aria-label="Close enlarged figure">×</button><img id="enlarged-figure" alt="" />
+    </dialog>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ScholarlyArticle",
+        "name": "Past as State, Present as Attention: Persistent-State Blockwise Flow Matching for Long-Horizon Co-Speech Motion Generation",
+        "author": [
+          { "@type": "Person", "name": "Yi Liu" },
+          { "@type": "Person", "name": "Xiangyue Zhang" },
+          { "@type": "Person", "name": "Jianfang Li" },
+          { "@type": "Person", "name": "Jia Ma" },
+          { "@type": "Person", "name": "Yisheng He" },
+          { "@type": "Person", "name": "Jianqiang Ren" }
+        ],
+        "datePublished": "2026",
+        "abstract": "Co-speech motion generation remains challenging over long horizons due to the need for temporal coherence and consistent style. Existing methods typically generate long motions segment by segment, either conditioning on a short seed of recent frames, which gradually drifts, or retaining ever-longer explicit histories, which are costly to maintain and hard to learn from limited data. We trace these limitations to a key asymmetry between past and present: past motion carries slowly varying style that should be compactly summarized, whereas the current segment exhibits fast-changing local dynamics that require fine-grained modeling. This asymmetry motivates a simple Past-As-State, Present-as-Attention principle for long-horizon co-speech motion generation. Following this principle, we propose PASPA, which summarizes past history with an inter-block persistent state and models the current segment with intra-block bidirectional self-attention. We instantiate PASPA within a blockwise flow matching framework, with multi-block supervision for effective training over variable histories, prefill-decode state caching for efficient rollout, and hybrid classifier-free guidance for enhanced history and speech conditioning. Extensive public-benchmark experiments show that PASPA achieves state-of-the-art FGD performance and preserves motion style across long-sequence generation."
+      }
+    </script>
+    <script>
+      (() => {
+        "use strict";
+        const video = document.getElementById("demo-video");
+        document.querySelectorAll("[data-time]").forEach((button) =>
+          button.addEventListener("click", () => {
+            video.currentTime = Number(button.dataset.time);
+            video.play().catch(() => {});
+            video.focus({ preventScroll: true });
+          })
+        );
+        const dialog = document.getElementById("figure-dialog"),
+          enlarged = document.getElementById("enlarged-figure");
+        document.querySelectorAll(".zoom").forEach((button) =>
+          button.addEventListener("click", () => {
+            const img = button.querySelector("img");
+            enlarged.src = img.src;
+            enlarged.alt = img.alt;
+            document.getElementById("figure-dialog-title").textContent = button.getAttribute("aria-label").replace(/^Enlarge (the )?/, "");
+            dialog.showModal();
+          })
+        );
+        dialog.querySelector("button").addEventListener("click", () => dialog.close());
+        dialog.addEventListener("click", (event) => {
+          if (event.target === dialog) dialog.close();
+        });
+        const copyButton = document.getElementById("copy-citation"),
+          bibtex = document.getElementById("bibtex"),
+          status = document.getElementById("copy-status");
+        copyButton.addEventListener("click", async () => {
+          let copied = false;
+          try {
+            await navigator.clipboard.writeText(bibtex.textContent);
+            copied = true;
+          } catch (_) {
+            const selection = window.getSelection(),
+              range = document.createRange();
+            range.selectNodeContents(bibtex);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+              copied = document.execCommand("copy");
+            } catch (_) {}
+            if (copied) selection.removeAllRanges();
+          }
+          copyButton.textContent = copied ? "Copied!" : "Selected";
+          status.textContent = copied ? "Citation copied." : "Citation selected. Copy it with your keyboard.";
+          setTimeout(() => {
+            copyButton.textContent = "Copy BibTeX";
+            status.textContent = "";
+          }, 2600);
+        });
+        const navLinks = [...document.querySelectorAll(".nav-links a")];
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  navLinks.forEach((link) => {
+                    if (link.getAttribute("href") === "#" + entry.target.id) link.setAttribute("aria-current", "location");
+                    else link.removeAttribute("aria-current");
+                  });
+                }
+              });
+            },
+            { rootMargin: "-15% 0px -60% 0px", threshold: 0 }
+          );
+          navLinks.forEach((link) => {
+            const target = document.querySelector(link.getAttribute("href"));
+            if (target) observer.observe(target);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

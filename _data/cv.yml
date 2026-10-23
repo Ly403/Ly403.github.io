@@ -1,97 +1,115 @@
-- title: General Information
+- title: "General Information"
   type: map
   contents:
-    - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+    - name: "Full Name"
+      value: "Yi LIU"
+    - name: "Email"
+      value: "liuyi61@tongji.edu.cn"
+    - name: "Website"
+      value: "https://ly403.github.io/"
+    - name: "Research"
+      value: "Yi Liu is a master's student at ADMIS Lab, Tongji University, advised by Associate Professor Wengen Li. His research focuses on efficient and controllable diffusion and flow matching models for image restoration, image and video generation, and digital-human motion generation."
 
-- title: Education
+- title: "Education"
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: "M.Eng. in Computer Science and Technology, School of Computer Science and Technology"
+      institution: "Tongji University"
+      year: "2024-09 – 2027-03"
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+        - "Average score: 93.88/100"
+        - "Advisor: Associate Professor Wengen Li"
+        - "Expected graduation: March 2027"
+        - "National Scholarship for Graduate Students"
+    - title: "B.Eng. in Computer Science and Technology, College of Electronics and Information Engineering"
+      institution: "Tongji University"
+      year: "2020-09 – 2024-07"
       description:
-        - Description 1.
-        - Description 2.
+        - "Cumulative GPA: 4.65/5.0 (91.49/100)"
+        - "Admitted to the master's program by recommendation (examination waived)"
+    - title: "Minor in Finance"
+      institution: "Fudan University"
+      year: "2021-09 – 2023-03"
+      description:
 
-- title: Experience
+- title: "Internship Experience"
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: "Research Intern"
+      institution: "ByteDance, GenAI & Ads Infra, Shanghai, China"
+      year: "2026-05 – Present"
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - "Efficient generative models and inference acceleration."
+        - "Research on generation efficiency and hardware-aware acceleration."
+    - title: "Research Intern"
+      institution: "Alibaba Cloud, Tongyi Lab (Multimodal Interaction), Hangzhou, China"
+      year: "2025-06 – 2026-05"
       description:
-        - Description 1.
-        - Description 2.
+        - "Long-horizon co-speech motion generation for 3D digital humans."
+        - "Proposed PASPA, a blockwise flow matching model that summarizes history into a persistent state and models current motion with blockwise attention."
+        - "Developed long-sequence generation with a fixed-size history state; first-author paper at NeurIPS 2026."
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
-
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
-
-- title: Other Interests
+- title: "Publications"
   type: list
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - '<a href="https://ly403.github.io/PASPA/">Past as State, Present as Attention: Persistent-State Blockwise Flow Matching for Long-Horizon Co-Speech Motion Generation</a>. <em>NeurIPS 2026</em>. Yi Liu, Xiangyue Zhang, Jianfang Li, Jia Ma, Yisheng He, and Jianqiang Ren.'
+    - '<a href="https://arxiv.org/abs/2605.21381">Disentangling Generation and Regression in Stochastic Interpolants for Controllable Image Restoration</a>. <em>arXiv:2605.21381</em>. Yi Liu, Jia Ma, Wengen Li, Jihong Guan, Shuigeng Zhou, and Yichao Zhang.'
+    - '<a href="https://arxiv.org/abs/2602.00536">SADER: Structure-Aware Diffusion Framework with DEterministic Resampling for Multi-Temporal Remote Sensing Cloud Removal</a>. <em>arXiv:2602.00536</em>. Yifan Zhang, Qian Chen, Yi Liu, Wengen Li, and Jihong Guan. Yi Liu is a co-first author.'
+    - '<a href="https://arxiv.org/abs/2503.23717">Effective Cloud Removal for Remote Sensing Images by an Improved Mean-Reverting Denoising Model with Elucidated Design Space</a>. <em>CVPR 2025, pp. 17851–17861</em>. Yi Liu, Wengen Li, Jihong Guan, Shuigeng Zhou, and Yichao Zhang.'
+
+- title: "Research Experience"
+  type: time_table
+  contents:
+    - title: "Controllable Image Restoration via Disentangled Stochastic Interpolants"
+      institution: "Project Leader, ADMIS Lab, Tongji University; advised by Associate Professor Wengen Li."
+      year: "2025-07 – 2026-03"
+      description:
+        - "Proposed DiSI, which separates regression and generation components in stochastic interpolants to reconcile efficient reconstruction with realistic generation."
+        - "Developed a single model with inference-time control over the reconstruction–generation trade-off across deraining, denoising, super-resolution, and inpainting."
+    - title: "Effective Cloud Removal by an Improved Mean-Reverting Denoising Model"
+      institution: "Project Leader, ADMIS Lab, Tongji University; advised by Associate Professor Wengen Li."
+      year: "2023-10 – 2024-11"
+      description:
+        - "Proposed EMRDM, a modular mean-reverting diffusion framework that directly transforms cloudy images into cloud-free images."
+        - "Designed a unified network for mono-temporal and multi-temporal inputs; first-author paper at CVPR 2025, with a released implementation."
+    - title: "Efficient Reconstruction for Snapshot Compressive Imaging"
+      institution: "Visiting Student, SCI Lab, Westlake University; mentored by Professor Xin Yuan."
+      year: "2024-02 – 2024-06"
+      description:
+        - "Adapted efficient architectures, including linear attention and state space models, for lower-cost snapshot compressive imaging reconstruction."
+        - "Reviewed more than 50 papers and presented a technical report at group meetings."
+    - title: "SenseAir: AI-Driven Compressed Air System Management Platform"
+      institution: "Core Team Member, Tongji University."
+      year: "2023-03 – 2023-09"
+      description:
+        - "Developed a digital-twin platform for compressed-air system operation, maintenance, and optimization."
+        - "First inventor of a granted patent, with a registered software copyright."
+
+- title: "Honors and Awards"
+  type: time_table
+  contents:
+    - year: "2025-12"
+      items:
+        - "National Scholarship for Graduate Students — Ministry of Education of China"
+    - year: "2023-09"
+      items:
+        - "Gold Prize, Internet+ Innovation and Entrepreneurship Competition (Shanghai Regional) — Internet+ Innovation and Entrepreneurship Competition"
+    - year: "2023-08"
+      items:
+        - "Third Prize, National University Student Contest on Energy Saving and Emission Reduction — National University Student Contest on Energy Saving and Emission Reduction"
+    - year: "2023-03"
+      items:
+        - "First Prize, Undergraduate Group of Asia and Pacific Mathematical Contest in Modeling — Asia and Pacific Mathematical Contest in Modeling"
+    - year: "2022-08"
+      items:
+        - "Second Prize, Embedded System Design Invitational Contest (Intel Cup) — National Undergraduate Electronic Design Contest"
+    - year: "2020–2024"
+      items:
+        - "Second and Third Prizes, Outstanding Undergraduate Student Scholarship — Tongji University"
+
+- title: "Skills and Languages"
+  type: list
+  contents:
+    - "Python · PyTorch / PyTorch Lightning · C/C++ · Linux / Git · LaTeX"
+    - "Chinese: Native speaker"
+    - "English: IELTS 7.0 (Reading 8.5, Listening 7.5, Speaking 6.0, Writing 6.5); CET-6 557"

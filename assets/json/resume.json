@@ -3,10 +3,10 @@
     "name": "Yi LIU",
     "label": "Master's Student",
     "image": "profile.jpg",
-    "email": "liuyi2052697@foxmail.com",
+    "email": "liuyi61@tongji.edu.cn",
     "phone": "(+86) 183-2641-8258",
-    "url": "https://Ly403.github.io/",
-    "summary": "Yi Liu is currently a master's student at ADMIS Lab in Tongji University, supervised by Associate Professor Wengen Li. Before that, he received his bachelor’s degree at Tongji University in 2024.",
+    "url": "https://ly403.github.io/",
+    "summary": "Yi Liu is a master's student at ADMIS Lab, Tongji University, advised by Associate Professor Wengen Li. His research focuses on efficient and controllable diffusion and flow matching models for image restoration, image and video generation, and digital-human motion generation.",
     "location": {
       "address": "4800 Cao'an Road, Jiading District",
       "postalCode": "201804",
@@ -27,23 +27,28 @@
       "institution": "Tongji University",
       "location": "Shanghai, China",
       "url": "https://www.tongji.edu.cn/",
-      "area": "Computer Science and Technology, College of Computer Science and Technology",
-      "studyType": "Master",
-      "startDate": "2024-09-01",
-      "endDate": "2027-03-01",
-      "score": "95.18/100.0",
-      "courses": ["Professional English", "Concrete Mathematics", "Frontiers of Computing Technology", "Machine Learning: Theories and Applications", "Principles of Artificial Intelligence"]
+      "area": "Computer Science and Technology, School of Computer Science and Technology",
+      "studyType": "M.Eng.",
+      "startDate": "2024-09",
+      "endDate": "2027-03",
+      "score": "93.88/100",
+      "courses": [
+        "Average score: 93.88/100",
+        "Advisor: Associate Professor Wengen Li",
+        "Expected graduation: March 2027",
+        "National Scholarship for Graduate Students"
+      ]
     },
     {
       "institution": "Tongji University",
       "location": "Shanghai, China",
       "url": "https://www.tongji.edu.cn/",
       "area": "Computer Science and Technology, College of Electronics and Information Engineering",
-      "studyType": "Bachelor",
-      "startDate": "2020-09-01",
-      "endDate": "2024-07-01",
-      "score": "4.65/5.0 (91.5/100)",
-      "courses": ["Machine Learning", "Computer Networks", "Operating Systems", "Artificial Intelligence", "Data Structures and Algorithms", "Compiler Principle", "Computer Organization and Architecture", "Database System Principles", "Advanced Programming Design", "Probability and Statistics", "Linear Algebra", "Discrete Mathematics", "Advanced Mathematics"]
+      "studyType": "B.Eng.",
+      "startDate": "2020-09",
+      "endDate": "2024-07",
+      "score": "4.65/5.0 (91.49/100)",
+      "courses": ["Cumulative GPA: 4.65/5.0 (91.49/100)", "Admitted to the master's program by recommendation (examination waived)"]
     },
     {
       "institution": "Fudan University",
@@ -55,152 +60,169 @@
       "endDate": "2023-03-01"
     }
   ],
-  "awards": [
+  "work": [
     {
-      "title": "Golden Prize, The 9th China International College Students' \"Internet+\" Innovation and Entrepreneurship Competition (Shanghai Regional)",
-      "date": "2023-09-01",
-      "awarder": "Shanghai Municipal Education Commission",
-      "summary": "China International College Students' \"Internet+\" Innovation and Entrepreneurship Competition (\"互联网+\"大学生创新创业大赛) is a national-level competition for college students. Organized by the Ministry of Education and other government bodies, it encourages college students and young entrepreneurs to integrate internet technologies with traditional industries, fostering innovation and startups. It has grown into one of the world's largest innovation platforms, attracting millions of entries annually and bridging academia, industry, and investment."
+      "name": "ByteDance, GenAI & Ads Infra",
+      "position": "Research Intern",
+      "location": "Shanghai, China",
+      "startDate": "2026-05",
+      "url": "https://www.bytedance.com/",
+      "summary": "Efficient generative models and inference acceleration.",
+      "highlights": ["Research on generation efficiency and hardware-aware acceleration."]
     },
     {
-      "title": "Third Prize, The 16th National University Student Social Practice and Science Contest on Energy Saving & Emission Reduction",
-      "date": "2023-08-01",
-      "awarder": "The Organizing Committee of the National University Student Social Practice and Science Contest on Energy Saving & Emission Reduction",
-      "summary": "The National University Student Social Practice and Science Contest on Energy Saving & Emission Reduction (全国大学生节能减排社会实践与科技竞赛) is a prominent, large-scale competition. Its aim is to promote social awareness and engagement among university students in the critical areas of energy-saving and emission reduction through technological innovation and practical projects."
-    },
-    {
-      "title": "First Prize, Undergraduate Group of Asia and Pacific Mathematical Contest in Modeling",
-      "date": "2023-03-01",
-      "awarder": "Asia and Pacific Mathematical Contest in Modeling (APMCM) Organizing Committee",
-      "summary": "Asia and Pacific Mathematical Contest in Modeling (亚太地区大学生数学建模竞赛) is a prestigious international competition that challenges students' mathematical modeling and problem-solving skills."
-    },
-    {
-      "title": "Third Prize, 2020-2021 Tongji University Undergraduate Outstanding Student Scholarship",
-      "date": "2022-12-01",
-      "awarder": "Tongji University",
-      "summary": "Tongji University Undergraduate Outstanding Student Scholarship (同济大学本科生优秀学生奖学金) is a scholarship for outstanding students in Tongji University."
-    },
-    {
-      "title": "Second Prize, Undergraduate Electronic Design Contest -- 2022 Embedded System Design Invitational Contest (Intel Cup)",
-      "date": "2022-08-01",
-      "awarder": "National Undergraduate Electronic Design Contest Organizing Committee",
-      "summary": "The 2022 Intel Cup Embedded System Design Invitational (英特尔杯嵌入式系统专题邀请赛) is a national competition for university students in China, focusing on innovation and practical skills in embedded system design."
-    },
-    {
-      "title": "Second Prize, 2020-2021 Tongji University Undergraduate Outstanding Student Scholarship",
-      "date": "2021-12-01",
-      "awarder": "Tongji University",
-      "summary": "Tongji University Undergraduate Outstanding Student Scholarship (同济大学本科生优秀学生奖学金) is a scholarship for outstanding students in Tongji University."
+      "name": "Alibaba Cloud, Tongyi Lab (Multimodal Interaction)",
+      "position": "Research Intern",
+      "location": "Hangzhou, China",
+      "startDate": "2025-06",
+      "endDate": "2026-05",
+      "url": "https://ly403.github.io/PASPA/",
+      "summary": "Long-horizon co-speech motion generation for 3D digital humans.",
+      "highlights": [
+        "Proposed PASPA, a blockwise flow matching model that summarizes history into a persistent state and models current motion with blockwise attention.",
+        "Developed long-sequence generation with a fixed-size history state; first-author paper at NeurIPS 2026."
+      ]
     }
   ],
   "publications": [
     {
+      "name": "Past as State, Present as Attention: Persistent-State Blockwise Flow Matching for Long-Horizon Co-Speech Motion Generation",
+      "publisher": "NeurIPS 2026",
+      "releaseDate": "2026",
+      "url": "https://ly403.github.io/PASPA/",
+      "summary": "Yi Liu, Xiangyue Zhang, Jianfang Li, Jia Ma, Yisheng He, and Jianqiang Ren."
+    },
+    {
+      "name": "Disentangling Generation and Regression in Stochastic Interpolants for Controllable Image Restoration",
+      "publisher": "arXiv:2605.21381",
+      "releaseDate": "2026-05-20",
+      "url": "https://arxiv.org/abs/2605.21381",
+      "summary": "Yi Liu, Jia Ma, Wengen Li, Jihong Guan, Shuigeng Zhou, and Yichao Zhang."
+    },
+    {
+      "name": "SADER: Structure-Aware Diffusion Framework with DEterministic Resampling for Multi-Temporal Remote Sensing Cloud Removal",
+      "publisher": "arXiv:2602.00536",
+      "releaseDate": "2026-01-31",
+      "url": "https://arxiv.org/abs/2602.00536",
+      "summary": "Yifan Zhang, Qian Chen, Yi Liu, Wengen Li, and Jihong Guan. Yi Liu is a co-first author."
+    },
+    {
       "name": "Effective Cloud Removal for Remote Sensing Images by an Improved Mean-Reverting Denoising Model with Elucidated Design Space",
-      "publisher": "The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2025",
-      "releaseDate": "2025-03-31",
+      "publisher": "CVPR 2025, pp. 17851–17861",
+      "releaseDate": "2025-06",
       "url": "https://arxiv.org/abs/2503.23717",
-      "summary": "This is the first paper published by Yi Liu in CVPR 2025. This paper is about improving diffusion models for cloud removal in remote sensing image processing. This is also the undergraduate thesis of Yi Liu, which is supervised by Associate Professor Wengen Li. This thesis also got the excellent undergraduate thesis award in College of Computer Science and Technology, Tongji University."
-    }
-  ],
-  "skills": [
-    {
-      "name": "Programming",
-      "icon": "fa-solid fa-hashtag",
-      "keywords": [
-        "C/C++",
-        "Python (including PyTorch, PyTorch Lightning, numpy, etc.)",
-        "Microsoft Office (Word, Excel, PowerPoint, etc.)",
-        "Ongoing Learning: Hardware Coding (CUDA, CuTe, Triton, etc.)"
-      ]
-    }
-  ],
-  "languages": [
-    {
-      "language": "Mandarin Chinese",
-      "fluency": "Native speaker",
-      "icon": ""
-    },
-    {
-      "language": "English",
-      "fluency": "Fluent (IELTS 7.0: Reading 8.5, Listening 7.0, Speaking 6.5, Writing 6.5)",
-      "icon": ""
-    }
-  ],
-  "interests": [
-    {
-      "name": "Generative Models",
-      "icon": "fa-solid fa-tag",
-      "keywords": [
-        "Variational Autoencoder (VAE)",
-        "Generative Adversarial Networks (GANs)",
-        "Diffusion Models",
-        "Score-based Generative Models",
-        "Flow Matching Models",
-        "Consistency Models",
-        "Autoregressive Models for Computer Vision (e.g. VAR)"
-      ]
-    },
-    {
-      "name": "Low-Level Vision (Image Restoration)",
-      "icon": "fa-solid fa-tag",
-      "keywords": [
-        "Image Denoising",
-        "Image Super-Resolution",
-        "Image Inpainting",
-        "Image Deblurring",
-        "Image Dehazing",
-        "Cloud Removal in Remote Sensing Image Processing"
-      ]
-    },
-    {
-      "name": "Efficient Deep Learning Models",
-      "icon": "fa-solid fa-tag",
-      "keywords": [
-        "Linear Attention",
-        "State Space Models (e.g. Mamba)",
-        "Hardware-Aware Optimization (e.g. quantization, kernel fusion, etc.)"
-      ]
-    }
-  ],
-  "references": [
-    {
-      "name": "Associate Professor Wengen Li",
-      "icon": "fa-solid fa-laptop",
-      "reference": "Professor Wengen Li is the supervisor of Yi Liu. He is an associate professor at the College of Computer Science and Technology, Tongji University. His research interests include Multimodal Intelligence and Spatial Temporal Data Analysis."
+      "summary": "Yi Liu, Wengen Li, Jihong Guan, Shuigeng Zhou, and Yichao Zhang."
     }
   ],
   "projects": [
     {
-      "name": "Cloud Removal Based on Generative Models",
-      "summary": "1) Conducted systematic analysis of 100+ top-tier conference/journal papers, completing a thorough technical review and bottleneck problem analysis for diffusion models in remote sensing cloud removal tasks. 2) Proposed a novel cloud removal diffusion model with modular framework addressing pixel-level inconsistency, module coupling issues, and mono/multi-temporal compatibility, achieving SOTA performance. 3) First-author paper accepted to appear at CVPR 2025.",
-      "highlights": ["Diffusion Models", "Remote Sensing Image Processing", "Cloud Removal", "Low-Level Vision"],
-      "startDate": "2023-10-01",
-      "endDate": "2025-03-01",
-      "url": "https://arxiv.org/abs/2503.23717"
+      "name": "Controllable Image Restoration via Disentangled Stochastic Interpolants",
+      "summary": "Project Leader, ADMIS Lab, Tongji University; advised by Associate Professor Wengen Li.",
+      "startDate": "2025-07",
+      "endDate": "2026-03",
+      "url": "https://arxiv.org/abs/2605.21381",
+      "highlights": [
+        "Proposed DiSI, which separates regression and generation components in stochastic interpolants to reconcile efficient reconstruction with realistic generation.",
+        "Developed a single model with inference-time control over the reconstruction–generation trade-off across deraining, denoising, super-resolution, and inpainting."
+      ]
     },
     {
-      "name": "Compressed Image Reconstruction (Low-Level Vision)",
-      "summary": "1) Comprehensively conducted literature review on snapshot compressive imaging (SCI), analyzing 50+ top-tier conference/journal papers (CVPR/ICCV/TPAMI) to deliver a visiting report as a technical summary. 2) Independently investigated efficient architectures (linear attention, state space models), adapting these frameworks into low-level vision pipelines validated on SCI benchmarks, with findings presented at lab meetings.",
-      "highlights": ["Low-Level Vision", "Compressed Image Reconstruction", "Snapshot Compressive Imaging", "Efficient Deep Learning Models"],
-      "startDate": "2024-02-20",
-      "endDate": "2024-06-31",
-      "url": "http://Ly403.github.io/cv/#projects-1"
+      "name": "Effective Cloud Removal by an Improved Mean-Reverting Denoising Model",
+      "summary": "Project Leader, ADMIS Lab, Tongji University; advised by Associate Professor Wengen Li.",
+      "startDate": "2023-10",
+      "endDate": "2024-11",
+      "url": "https://github.com/Ly403/EMRDM",
+      "highlights": [
+        "Proposed EMRDM, a modular mean-reverting diffusion framework that directly transforms cloudy images into cloud-free images.",
+        "Designed a unified network for mono-temporal and multi-temporal inputs; first-author paper at CVPR 2025, with a released implementation."
+      ]
+    },
+    {
+      "name": "Efficient Reconstruction for Snapshot Compressive Imaging",
+      "summary": "Visiting Student, SCI Lab, Westlake University; mentored by Professor Xin Yuan.",
+      "startDate": "2024-02",
+      "endDate": "2024-06",
+      "url": "https://www.westlake.edu.cn/",
+      "highlights": [
+        "Adapted efficient architectures, including linear attention and state space models, for lower-cost snapshot compressive imaging reconstruction.",
+        "Reviewed more than 50 papers and presented a technical report at group meetings."
+      ]
     },
     {
       "name": "SenseAir: AI-Driven Compressed Air System Management Platform",
-      "summary": "Developed a digital twin platform integrating deep learning for air compressor maintenance; obtained software copyright and filed patent application (CN202211466896.3) based on our innovation as the first inventor.",
-      "highlights": ["Digital Twin", "Compressed Air System", "Software Copyright", "Patent Application", "Deep Learning"],
-      "startDate": "2023-03-01",
-      "endDate": "2023-09-30",
-      "url": "http://Ly403.github.io/cv/#projects-1"
+      "summary": "Core Team Member, Tongji University.",
+      "startDate": "2023-03",
+      "endDate": "2023-09",
+      "highlights": [
+        "Developed a digital-twin platform for compressed-air system operation, maintenance, and optimization.",
+        "First inventor of a granted patent, with a registered software copyright."
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "National Scholarship for Graduate Students",
+      "date": "2025-12",
+      "awarder": "Ministry of Education of China"
     },
     {
-      "name": "Remote Human-Machine Co-Driving System", 
-      "summary": "1) Engaged in an in-depth study of autonomous driving. 2) Present weekly reports on the findings of literature review. 3) Authored and refined a patent application (CN202211466896.3).",
-      "highlights": ["Autonomous Driving", "Remote Human-Machine Co-Driving System", "Patent Application"],
-      "startDate": "2022-06-01",
-      "endDate": "2022-09-01",
-      "url": "http://Ly403.github.io/cv/#projects-1"
+      "title": "Gold Prize, Internet+ Innovation and Entrepreneurship Competition (Shanghai Regional)",
+      "date": "2023-09",
+      "awarder": "Internet+ Innovation and Entrepreneurship Competition"
+    },
+    {
+      "title": "Third Prize, National University Student Contest on Energy Saving and Emission Reduction",
+      "date": "2023-08",
+      "awarder": "National University Student Contest on Energy Saving and Emission Reduction"
+    },
+    {
+      "title": "First Prize, Undergraduate Group of Asia and Pacific Mathematical Contest in Modeling",
+      "date": "2023-03",
+      "awarder": "Asia and Pacific Mathematical Contest in Modeling"
+    },
+    {
+      "title": "Second Prize, Embedded System Design Invitational Contest (Intel Cup)",
+      "date": "2022-08",
+      "awarder": "National Undergraduate Electronic Design Contest"
+    },
+    {
+      "title": "Second and Third Prizes, Outstanding Undergraduate Student Scholarship",
+      "date": "2020–2024",
+      "awarder": "Tongji University"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming and Tools",
+      "icon": "fa-solid fa-code",
+      "keywords": ["Python", "PyTorch / PyTorch Lightning", "C/C++", "Linux / Git", "LaTeX"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Chinese",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "IELTS 7.0 (Reading 8.5, Listening 7.5, Speaking 6.0, Writing 6.5); CET-6 557"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Efficient and Controllable Generative Models",
+      "icon": "fa-solid fa-tag",
+      "keywords": ["Diffusion models", "Flow matching", "Few-step sampling", "Conditional control"]
+    },
+    {
+      "name": "Visual Generation and Restoration",
+      "icon": "fa-solid fa-tag",
+      "keywords": ["Image restoration", "Image and video generation", "Digital-human motion generation", "Temporally coherent long-sequence modeling"]
+    },
+    {
+      "name": "Efficient Architectures and Implementation",
+      "icon": "fa-solid fa-tag",
+      "keywords": ["Lightweight architectures", "Linear attention and state space models", "Hardware-aware acceleration"]
     }
   ],
   "volunteer": [
@@ -221,6 +243,13 @@
       "endDate": "2022-01-01",
       "summary": "1) Assumed the role of meeting secretary, diligently documenting meeting proceedings weekly following departmental requirements at the Tongji Association Center. Collaborated closely with co-workers to ensure accurate recording of meetings. 2) Actively contributed to the organization of various club activities, including the Club Gala and Club Carnival at Tongji University. Collaborated effectively to assist clubs in planning and executing successful events.",
       "url": "http://Ly403.github.io/cv/#volunteer-1"
+    }
+  ],
+  "references": [
+    {
+      "name": "Associate Professor Wengen Li",
+      "icon": "fa-solid fa-laptop",
+      "reference": "Professor Wengen Li is the supervisor of Yi Liu. He is an associate professor at the College of Computer Science and Technology, Tongji University. His research interests include Multimodal Intelligence and Spatial Temporal Data Analysis."
     }
   ]
 }

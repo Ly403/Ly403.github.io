@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: 
+subtitle:
 
 profile:
   align: right
@@ -27,20 +27,18 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-**Yi Liu (or Liu Yi，刘毅)** is currently a first-year master's student of Computer Science and Technology at the [ADMIS Lab](https://admis-tongji.github.io/) in the [College of Computer Science and Technology](https://cs.tongji.edu.cn/) of [Tongji University](https://www.tongji.edu.cn/), under the supervision of [Associate Professor Wengen Li](https://admis-tongji.github.io/members/03wengen-li.html). 
-Prior to this, he obtained his Bachelor’s degree in Computer Science and Technology from the [College of Electronic and Information Engineering](https://see-en.tongji.edu.cn/) of [Tongji University](https://www.tongji.edu.cn/) in 2024.
+**Yi Liu (Liu Yi, 刘毅)** is a master's student in Computer Science and Technology at the [ADMIS Lab](https://admis-tongji.github.io/), [Tongji University](https://www.tongji.edu.cn/), advised by [Associate Professor Wengen Li](https://admis-tongji.github.io/members/03wengen-li.html). He received his bachelor's degree from Tongji University in 2024 and expects to complete his master's degree in March 2027.
 
-His research interests focus on **various generative models, with a specialization in diffusion models**.
-In 2024, he initiated his research career by delving into the **low-level vision domain**. During this period, he worked on improving the theoretical foundations of diffusion models for image restoration tasks, such as cloud removal in remote sensing image processing.
-Currently, he is dedicated to **developing efficient generative models** for diverse downstream applications (e.g., image restoration, image generation, etc.).
+His research focuses on **efficient and controllable generative models**, particularly **diffusion models and flow matching**, for image restoration, image and video generation, and digital-human motion generation.
 
-Yi Liu's long-term objectives are twofold: **to establish a rigorous mathematical understanding of generative models and to create hardware-aware optimizations for accelerating these models**. Specifically, his goals encompass:
+His main interests are:
 
-1. Understanding the mathematical principles underlying generative models (particularly diffusion models) through Bayesian statistics, differential equations, and optimal transport theory;
-2. Accelerating the inference processes of generative models (e.g., enabling one-step sampling in diffusion models) by leveraging these theoretical insights;
-3. Designing efficient network architectures (e.g., linear attention mechanisms, state space models) for generative models across different downstream tasks;
-4. Optimizing the training and inference of generative models through hardware-aware programming using Triton, CUDA, and CuTe.
+1. **Efficient generation:** few-step sampling, lightweight architectures, and hardware-aware acceleration.
+2. **Conditional control:** restoration guidance and a controllable balance between faithful reconstruction and realistic generation.
+3. **Long-sequence modeling:** history-conditioned generation with temporal coherence and consistent motion style.
 
-While these goals remain ongoing pursuits, Yi Liu is actively engaged in advancing this dual-focused research agenda through continuous study and practical implementation. 
+He is currently a research intern at **ByteDance** (since May 2026). Previously, he worked at **Alibaba Cloud's Tongyi Lab** on long-horizon co-speech motion generation (June 2025–May 2026) and visited **SCI Lab, Westlake University**, mentored by Professor Xin Yuan (February–June 2024).
 
-📧 If you are interested in Yi Liu's work, please contact him via <a href="mailto:liuyi61@tongji.edu.cn">liuyi61@tongji.edu.cn</a> or <a href="mailto:liuyi61@tongji.edu.cn">liuyi2052697@foxmail.com</a> (preferred).
+His long-term goal is to make controllable generation fast and reliable enough for real-time, interactive applications through advances in both algorithms and hardware-aware implementation. He received the **National Scholarship for Graduate Students** in 2025.
+
+📧 Contact: <a href="mailto:liuyi61@tongji.edu.cn">liuyi61@tongji.edu.cn</a> or <a href="mailto:liuyi2052697@foxmail.com">liuyi2052697@foxmail.com</a>.
