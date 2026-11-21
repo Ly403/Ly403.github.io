@@ -1334,6 +1334,7 @@ nav: false
       <symbol id="i-paper" viewBox="0 0 24 24">
         <path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z M14 3v5h5 M8 12h8 M8 16h8" />
       </symbol>
+      <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5 M16 7l5 5-5 5 M14 4l-4 16" /></symbol>
       <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z" fill="currentColor" stroke="none" /></symbol>
       <symbol id="i-method" viewBox="0 0 24 24">
         <rect x="3" y="4" width="6" height="6" rx="1" />
@@ -1382,8 +1383,12 @@ nav: false
         <p class="corresponding-note" style="margin: 9px 0 0; font-size: 12px; color: var(--muted)">* Corresponding author</p>
         <p class="tagline">Summarize the past. Attend to the present.</p>
         <div class="actions">
-          <a class="button primary" id="paper-download" href="{{ '/assets/pdf/PASPA-Manuscript.pdf' | relative_url }}" download="PASPA-Manuscript.pdf"
-            ><svg class="icon"><use href="#i-paper" /></svg>Manuscript</a
+          <a class="button primary" href="https://arxiv.org/abs/2610.32373" target="_blank" rel="noopener noreferrer"
+            ><svg class="icon"><use href="#i-paper" /></svg>arXiv</a
+          ><a class="button" href="https://github.com/Ly403/PASPA" target="_blank" rel="noopener noreferrer"
+            ><svg class="icon"><use href="#i-code" /></svg>Code</a
+          ><a class="button" href="https://openreview.net/forum?id=dGHAQR4OKs" target="_blank" rel="noopener noreferrer"
+            ><svg class="icon"><use href="#i-paper" /></svg>OpenReview</a
           ><a class="button" href="#demo"
             ><svg class="icon"><use href="#i-play" /></svg>Demo</a
           ><a class="button" href="#method"
@@ -1916,10 +1921,12 @@ nav: false
             ><button class="copy-button" id="copy-citation" aria-label="Copy BibTeX citation">Copy BibTeX</button>
           </div>
           <pre id="bibtex">
-@misc{liu2026paspa,
+@inproceedings{liu2026past,
   title = {Past as State, Present as Attention: Persistent-State Blockwise Flow Matching for Long-Horizon Co-Speech Motion Generation},
-  author = {Liu, Yi and Zhang, Xiangyue and Li, Jianfang and Ma, Jia and He, Yisheng and Ren, Jianqiang},
-  year = {2026}
+  author = {Yi Liu and Xiangyue Zhang and Jianfang Li and Jia Ma and Yisheng He and Jianqiang Ren},
+  booktitle = {The Fortieth Annual Conference on Neural Information Processing Systems},
+  year = {2026},
+  url = {https://openreview.net/forum?id=dGHAQR4OKs}
 }</pre
           >
         </div>
